@@ -1,0 +1,2 @@
+class Hot < ApplicationRecord
+end

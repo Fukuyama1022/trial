@@ -1,0 +1,185 @@
+// Place all the styles related to the posts controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: https://sass-lang.com/
+.lecture_form{
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    width: 300px;
+    margin: 30px;
+  }
+  .name_field{
+    width: 200px;
+    margin-bottom: 30px;
+  }
+
+/*　以下新規投稿ページの星用のCSS　*/
+
+  .post_form{
+    display: flex;
+    flex-direction: row-reverse;
+    justify-content: flex-end;
+  }
+  .post_form input[type='radio']{
+    display: none;
+  }
+  .post_form label{
+    position: relative;
+    padding: 10px 10px 0;
+    color: gray;
+    cursor: pointer;
+    font-size: 30px; /*星の大きさを変更するときはここ*/
+  }
+  .post_form label .text{
+    position: absolute;
+    left: 0;
+    top: 0;
+    right: 0;
+    text-align: center;
+    font-size: 9px; /*星の上の説明書きの大きさを変更するときはここ*/
+    color: gray;
+  }
+  .post_form label:hover,
+  .post_form label:hover ~ label,
+  .post_form input[type='radio']:checked ~ label{
+    color: #ffcc00;
+  }
+
+
+/*　以下一覧ページの星用のCSS　*/
+
+  .star-rating {
+    position: relative;
+    display: inline-block;
+    width: 5em;
+    height: 1em;
+    font-size: 25px;
+  }
+  .star-rating-front {
+    display: inline-block;
+    position: absolute;
+    top: 0;
+    left: 0;
+    overflow: hidden;
+    color: #ffcc33;
+  }
+  .star-rating-back {
+    display: inline-block;
+    color: #ccc;
+
+  }
+
+.posts-top {
+  font-family:'Amatic SC', cursive;
+  font-size: 30px;
+  color: whitesmoke;
+  text-shadow: black 0 5px;
+  background-image: url(wood.jpg); 
+  height: 12vmax;
+ 
+}
+
+header{
+  margin-top: -30px;
+}
+
+.posts-second {
+  margin: 20px;
+  display:flex;
+  justify-content: space-around;
+  height: 10vmax;
+}
+.post-third {
+  font-size: 40px;
+  background-color: #F2C094;
+  text-align: center ;
+  border-radius: 100px;
+  box-shadow: 0 5px black;
+  display: block;
+  width: 25%;
+  padding: 15px;
+  box-sizing: border-box;
+  text-decoration: none;
+  margin: 10px 0;
+}
+.post-third a{
+  display: inline-block;
+  text-align: center;
+  padding-top: 30px;
+  color: black;
+  text-decoration: none;
+  
+}
+.post-third2 {
+  font-size: 40px;
+  width: 25%;
+  background-color: #D98C5F;
+  text-align: center;
+  border-radius: 100px;
+  box-shadow: 0 5px black;
+  display: block;
+  padding: 15px;
+  box-sizing: border-box;
+  text-decoration: none;
+  margin: 10px 0;
+}
+.post-third2 a{
+  display: inline-block;
+  text-align: center;
+  padding-top: 30px;
+  color: black;
+  text-decoration: none;
+}
+.post-third3{
+  font-size: 40px;
+  width: 25%;
+  background-color: #8C4C27;
+  text-align: center;
+  border-radius: 100px;
+  box-shadow: 0 5px black;
+  display: block;
+  padding: 15px;
+  box-sizing: border-box;
+  text-decoration: none;
+  margin: 10px 0;
+}
+.post-third3 a{
+  display: inline-block;
+  text-align: center;
+  padding-top: 30px;
+  color: black;
+  text-decoration: none;
+}
+.review{
+  font-family:'Amatic SC', cursive;
+}
+.parent{
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  background-color: bisque;
+}
+.postall{
+  height: 100%;
+  background-color: #D98C5F;
+  grid-column:1 / 2;
+  font-size: 30px;
+}
+.toukou{
+  font-size: 45px;
+}
+.post{
+  font-size: 30px;
+}
+.sauna{
+  grid-column:2 / 3;
+  font-size: 40px;
+  text-align: center;
+  font-family: 'Caveat', cursive;
+  background-color: red;
+}
+.ranking_post{
+  font-size: 45px;
+  height: 100%;
+  background-color: #ffcc00;
+  grid-column: 3 / 4;
+}

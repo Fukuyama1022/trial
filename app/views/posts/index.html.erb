@@ -1,0 +1,148 @@
+﻿<header>
+    <div class="posts-top">
+      <h1>TOTONOU</h1>
+      <%= button_to 'LOGOUT', destroy_user_session_path, method: :delete %>
+      <% if user_signed_in? %>
+    </div>
+</header>
+  <div class="posts-second">
+        <div class="post-third">
+            <%= link_to "POST", new_post_path %> 
+        </div>
+        <div class="post-third2">
+            <%= link_to "MYPAGE", user_path(current_user.id) %>
+        </div>
+        <div class="post-third3">
+            <%= link_to "ABOUT", posts_about_path %>
+        </div>
+      <% end %>
+  </div>
+
+<div class="parent">
+      <div class="postall">
+            <div class="toukou">
+            <p>投稿一覧</p>
+            </div>
+          <div class="post">
+            <% @posts.each do |t| %>
+              <%= t.user.name %>さん
+              <p><%= t.name %></p>
+              <%= link_to "詳細へ", post_path(t.id) %>
+              <% if user_signed_in? && current_user.id == t.user_id %>
+              <!--<p><%= t.about %></p>-->
+              <!--<p><%= t.price %></p>-->
+              <!--<%= image_tag t.image_url, size: "250x200" if t.image? %>-->
+              <!--<%= link_to t.user.name, user_path(t.user.id) %>-->
+              <!--<%= link_to "編集する", edit_post_path(t.id) %>-->
+              <!--<%= button_to "削除する", post_path(t.id), method: :delete  %>-->
+              <% end %>
+          </div>
+          <div class="review">
+              <p>総合評価
+                <span class="star-rating">
+                <span class="star-rating-front" style="width: <%= getPercent(t.sauna) %>%;">★★★★★</span>
+                <span class="star-rating-back">★★★★★</span>
+                </span> 
+              </p>
+          </div>
+          <div class="like">
+              <% if user_signed_in? %>
+                <% if current_user.already_liked?(t) %>
+                  <%= button_to post_like_path(id: t.id, post_id: t.id), method: :delete do %>
+                      <p>いいねを取り消す</p><%= t.likes.count %>
+                  <% end %>
+                <% else %>
+                  <%= button_to post_likes_path(id: t.id, post_id: t.id), method: :post do %>
+                      <p>いいね</p><%= t.likes.count %>
+                  <% end %>
+                <% end %>
+              <% else %>
+                <p>いいねの数 = </p><%= t.likes.count %>
+              <% end %>
+              <% end %>
+          </div>
+      </div>
+
+        <div class="sauna">
+          <p>サウナで心も身体も</p>
+          <p>TOTONOU</p>
+        </div>
+
+        <div class="ranking_post">
+            <p>いいねランキング</p>
+            <% @post_ranked.each_with_index do |t, i| %>
+            <% if i<3 %>
+            <%= image_tag t.image_url, size: "250x200" if t.image? %>
+                <p><%= t.name %></p>
+                <p><%= t.price %></p>
+                <p>いいねの数 = </p><%= t.likes.count %>
+              <% i+1 %>
+              <% end %>
+            <% end %>
+        </div>
+
+</div>
+
+
+
+
+<!--<div id='map'></div>
+
+<style>
+map {
+  height: 300px;
+  width: 100%;
+}
+</style>
+-->
+<!-- js部分 -->
+<!--<script>
+    function initMap() {
+
+#      //初期表示位置
+#      let latlng = new google.maps.LatLng(38.60, 139.5);
+#      //デザイン
+#      let styles = [
+#           {
+#            stylers: [
+#             { "saturation": 0 },
+#             { "lightness": 0 }
+ #           ]
+ #          }
+#          ];
+
+ #     let map = new google.maps.Map(document.getElementById('map'), {
+ #         zoom: 5.5,
+ #         styles: styles,
+          center: latlng
+      });
+      let transitLayer = new google.maps.TransitLayer();
+      transitLayer.setMap(map);
+
+//複数マーカー ここから
+      <% @posts.each do |post|%>
+        ( function() { 
+          let markerLatLng = { lat: <%= post.lat %>, lng: <%= post.lng %> }; // 緯度経度のデータ作成
+         let marker = new google.maps.Marker({ 
+            position: markerLatLng, 
+            map: map 
+          });
+//マーカーをクリックしたとき、詳細情報を表示
+         let infowindow = new google.maps.InfoWindow({
+            position: markerLatLng,
+            content: "<a href='<%= post_url(post.id) %>' target='_blank'><%= post.name %></a>"
+         }); //ここで詳細ページへのリンクを表示させる
+          marker.addListener('click', function() {
+            infowindow.open(map, marker);
+         });
+
+       })();
+      <% end %>
+      //複数マーカー ここまで  
+  }
+</script>
+
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBb4HJlPaYKDY9qKiKs0jAikyAUnFO3UP8&callback=initMap" async defer></script>
+
+</body>
+-->
